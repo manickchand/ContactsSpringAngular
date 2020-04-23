@@ -30,4 +30,10 @@ export class AppComponent {
     this.newContact = contact
   }
 
+  deleteContact(contact){
+    this.service.deleteContact(contact).subscribe((response)=>{
+      window.location.reload()
+    })
+  }
+
 }

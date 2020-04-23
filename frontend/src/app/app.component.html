@@ -18,13 +18,13 @@
     <div class="col">
 
       <div class="card m-space" *ngFor="let contact of listContacts">
-        <div class="card-body" (click)="setSelectedContact(contact)">
+        <div class="card-body">
           <p>{{contact.name}}</p>
           <p>{{contact.email}}</p>
           <p>{{contact.phone}}</p>
           <p>{{contact.sex}}</p>
-          <button type="button" (click)="saveContact()" class="btn btn-primary">Salvar</button>
-          <button type="button" (click)="saveContact()" class="btn btn-primary">Salvar</button>
+          <button type="button" (click)="setSelectedContact(contact)" class="btn btn-warning m-space">Edit</button>
+          <button type="button" (click)="deleteContact(contact)" class="btn btn-danger m-space">Delete</button>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-        <button type="button" (click)="saveContact()" class="btn btn-primary">Salvar</button>
+        <button type="button" (click)="saveContact()" class="btn btn-primary">Save</button>
       </form>
 
     </div>
