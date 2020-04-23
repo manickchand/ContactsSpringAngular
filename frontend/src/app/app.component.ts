@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,9 @@ export class AppComponent {
   title = 'Contact List';
 
   listContacts = []
+  newContact = {};
 
   constructor(private service: AppService){
-
-    this.fakeContacts()
 
     service.getAll().subscribe((result:[]) => {
       console.log(result);
@@ -22,30 +20,14 @@ export class AppComponent {
     });
   }
 
-  fakeContacts() {
-    this.listContacts = [
-      {
-          "id": 1,
-          "name": "Belly Manickchand",
-          "sex": "male",
-          "phone": "9999999",
-          "email": "beeeely"
-      },
-      {
-          "id": 2,
-          "name": "Leon Manickchand",
-          "sex": "male",
-          "phone": "9999999",
-          "email": "beeeely"
-      },
-      {
-          "id": 3,
-          "name": "Beth Manickchand",
-          "sex": "male",
-          "phone": "9999999",
-          "email": "asdsd"
-      }
-  ]
+  saveContact(){
+    this.service.saveContact(this.newContact).subscribe((response)=>{
+      window.location.reload()
+    })
+  }
+
+  setSelectedContact(contact){
+    this.newContact = contact
   }
 
 }

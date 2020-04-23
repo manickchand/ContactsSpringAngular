@@ -2,14 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin':  '*',
-    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
-  })
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +13,22 @@ export class AppService {
 
   getAll() {
     return this.http
-    .get(this.API_URL+"/contact", httpOptions);
+    .get(this.API_URL+"/contact");
+  }
+
+  saveContact(contact) {
+    return this.http
+    .post(this.API_URL+"/contact", contact);
+  }
+
+  updateContact(contact) {
+    return this.http
+    .put(this.API_URL+"/contact", contact);
+  }
+
+  deleteContact(contact) {
+    return this.http
+    .delete(this.API_URL+"/contact", contact);
   }
 
 }

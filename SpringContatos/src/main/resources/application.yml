@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://${POSTGRES_URL:localhost}:${POSTGRES_URL_PORT:5432}/${POSTGRES_DB_NAME:contact-crud}
     username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:postgres}
+    password: ${POSTGRES_PASSWORD:fpf@1212}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
     show-sql: false
@@ -13,8 +13,11 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
     properties:
       hibernate:
-       ddl-auto: create
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc.lob.non_contextual_creation: true
+        ddl-auto: create
+
 server:
-  port: ${BACKEND_PORT:8080}
   servlet:
     context-path: /api
+  port: ${BACKEND_PORT:8080}
