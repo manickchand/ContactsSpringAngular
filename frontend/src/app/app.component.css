@@ -59,3 +59,9 @@
   .m-space{
     margin: 8px;
   }
+
+  .no-contacts{
+    font-size: 30px;
+    color: #1976D2;
+    margin-top: 10%;
+  }

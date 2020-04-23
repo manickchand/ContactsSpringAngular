@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'Contact List';
 
   listContacts = []
-  newContact = {};
+  newContact:any = {};
 
   constructor(private service: AppService){
 
@@ -21,9 +21,15 @@ export class AppComponent {
   }
 
   saveContact(){
-    this.service.saveContact(this.newContact).subscribe((response)=>{
-      window.location.reload()
-    })
+
+    if(this.newContact != undefined){
+      this.service.saveContact(this.newContact).subscribe((response)=>{
+        window.location.reload()
+      })
+    }else{
+      alert("fill in all fields")
+    }
+    
   }
 
   setSelectedContact(contact){
@@ -31,9 +37,31 @@ export class AppComponent {
   }
 
   deleteContact(contact){
-    this.service.deleteContact(contact).subscribe((response)=>{
-      window.location.reload()
-    })
+    if(confirm("Delete that contact?")){
+      this.service.deleteContact(contact).subscribe((response)=>{
+        window.location.reload()
+      })
+    }
+  }
+
+  contactsEmpty(){
+    if(this.listContacts.length>0){
+      return false;
+    }else{
+      return true
+    }
+  }
+
+  validateFields(){
+    if(this.newContact.name != undefined
+      && this.newContact.email != undefined
+      && this.newContact.sex != undefined
+      && this.newContact.phone != undefined
+      ){
+        return false
+    }else{
+      return true
+    }
   }
 
 }

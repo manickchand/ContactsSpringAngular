@@ -17,6 +17,8 @@
   <div class="row">
     <div class="col">
 
+      <span *ngIf="contactsEmpty()" class="no-contacts text-center">There are no contacts</span>
+ 
       <div class="card m-space" *ngFor="let contact of listContacts">
         <div class="card-body">
           <p>{{contact.name}}</p>
@@ -33,17 +35,20 @@
     <div class="col">
 
       <h3 class="text-center">Add Contact</h3>
-      <form action="">
+
+      <form>
+
         <input type="hidden" [(ngModel)]="newContact.id" name="id">
-        <input type="text" class="form-control m-space" placeholder="name" [(ngModel)]="newContact.name" name="name">
-        <input type="text" class="form-control m-space" placeholder="email" [(ngModel)]="newContact.email" name="email">
-        <input type="text" class="form-control m-space" placeholder="phone" [(ngModel)]="newContact.phone" name="phone">
-        <select class="custom-select m-space" id="inputGroupSelect01" [(ngModel)]="newContact.sex" name="sex">
+        <input type="text" class="form-control m-space" placeholder="name" [(ngModel)]="newContact.name" name="name" required>
+        <input type="email" class="form-control m-space" placeholder="email" [(ngModel)]="newContact.email" name="email" required>
+        <input type="text" class="form-control m-space" placeholder="phone" [(ngModel)]="newContact.phone" name="phone" required>
+        <select class="custom-select m-space" id="inputGroupSelect01" [(ngModel)]="newContact.sex" name="sex" required>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-        <button type="button" (click)="saveContact()" class="btn btn-primary">Save</button>
+        <button type="submit" [disabled]="validateFields()" (click)="saveContact()" class="btn btn-primary">Save</button>
+
       </form>
 
     </div>
