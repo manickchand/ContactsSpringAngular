@@ -16,3 +16,5 @@ spring:
        ddl-auto: create
 server:
   port: ${BACKEND_PORT:8080}
+  servlet:
+    context-path: /api

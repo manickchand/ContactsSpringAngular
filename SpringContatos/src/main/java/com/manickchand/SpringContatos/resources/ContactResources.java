@@ -4,7 +4,8 @@ import com.manickchand.SpringContatos.dto.ContactDTO;
 import com.manickchand.SpringContatos.entity.Contact;
 import com.manickchand.SpringContatos.services.ContactServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.*;
 import javax.ws.rs.container.AsyncResponse;
@@ -13,8 +14,8 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.List;
 
-@Path("/contact")
-@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/contact")
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class ContactResources {
 
