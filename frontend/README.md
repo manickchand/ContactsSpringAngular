@@ -5,3 +5,6 @@
 * angular 8
 * npm install
 * ng serve
+
+## build
+ng build
