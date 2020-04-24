@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://${POSTGRES_URL:localhost}:${POSTGRES_URL_PORT:5432}/${POSTGRES_DB_NAME:contact-crud}
     username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:fpf@1212}
+    password: ${POSTGRES_PASSWORD:postgres}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
     show-sql: false
